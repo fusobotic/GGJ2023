@@ -1,8 +1,9 @@
 # GGJ 2023 Unity Project
 
-use:
-> git clone
+use this to clone project to your desktop (install git first):
+> git clone https://github.com/fusobotic/GGJ2023.git
 
+##Instructions
 1. Make sure you have Unity 2021.3.18f1 (LTS) installed. (include Windows, Mac, Linux build).
 2. Keep Unity Project Files in Source folder.
 3. Keep finalized art/sound in Assets folder in their sub folders.
