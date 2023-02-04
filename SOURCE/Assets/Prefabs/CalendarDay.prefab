@@ -34,10 +34,10 @@ RectTransform:
   m_Father: {fileID: 7761291987166044823}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.12200001}
-  m_AnchorMax: {x: 1, y: 0.5763265}
-  m_AnchoredPosition: {x: 0.1459961, y: 0.22879982}
-  m_SizeDelta: {x: 0.29, y: 1.5423999}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.54300004}
+  m_AnchoredPosition: {x: 0, y: 1}
+  m_SizeDelta: {x: -0.00000023841858, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2870982583261918317
 CanvasRenderer:
@@ -237,7 +237,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1525672927783562337}
   toggleTransition: 1
   graphic: {fileID: 7832777404113794444}
