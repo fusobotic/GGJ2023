@@ -13,6 +13,8 @@ public class DayCounter : MonoBehaviour
     private DayNightControl dayNightControl;
     [SerializeField]
     private Toggle[] calendarDays;
+
+    [SerializeField] private GameManager gm;
     
     //use this bool to check if we're in the middle of a transition or not
     public bool ChangingDay {
@@ -24,11 +26,13 @@ public class DayCounter : MonoBehaviour
         if (!changingDay && dayIndex < dayMax)
         {
             changingDay = true;
-            calendarDays[dayIndex].isOn = true;
+            if(calendarDays.Length > 2) 
+                calendarDays[dayIndex].isOn = true;
             dayIndex++;
             dayNightControl.ChangeToNight();
             yield return new WaitForSeconds(dayNightControl.CycleTime()*2);
             changingDay = false;
+            gm.CloseCover();
         }
         else if (!changingDay && dayIndex == dayMax)
         {
