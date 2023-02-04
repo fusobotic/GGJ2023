@@ -5,7 +5,7 @@ using UnityEngine;
 public class DayCounter : MonoBehaviour
 {
     private int dayIndex = 0;
-    private int dayMax = 3;
+    private int dayMax = 6;
     private bool changingDay = false;
 
     [SerializeField]
