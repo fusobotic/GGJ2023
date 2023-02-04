@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 718.4131, g: 1185.979, b: 2569.3794, a: 1}
+  m_IndirectSpecularColor: {r: 680.586, g: 1116.27, b: 2381.6055, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3736,7 +3736,7 @@ GameObject:
   - component: {fileID: 1645296552}
   - component: {fileID: 1645296553}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: OutdoorSceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
