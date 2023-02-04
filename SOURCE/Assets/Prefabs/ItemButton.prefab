@@ -258,7 +258,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8057289945778085766}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8057289945778085768}
+        m_TargetAssemblyTypeName: Item, Assembly-CSharp
+        m_MethodName: OnItemSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8057289945778085764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,35 +319,11 @@ MonoBehaviour:
   - eventID: 3
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 8057289945778085768}
-          m_TargetAssemblyTypeName: Item, Assembly-CSharp
-          m_MethodName: OnItemSelected
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
   - eventID: 2
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 8057289945778085768}
-          m_TargetAssemblyTypeName: Item, Assembly-CSharp
-          m_MethodName: ItemDeselected
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!114 &8057289945778085768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,6 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
   rootManager: {fileID: 0}
+  gm: {fileID: 0}
   hasSpike: 0
   hasStink: 0
   hasDrill: 0
@@ -365,5 +354,6 @@ MonoBehaviour:
   hiddenColor: {r: 0, g: 0, b: 0, a: 0.7882353}
   glowColor: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 0.78039217}
   availableColor: {r: 1, g: 1, b: 1, a: 1}
+  completedColor: {r: 0, g: 0, b: 0, a: 0}
   itemImage: {fileID: 8057289945778085766}
   itemButton: {fileID: 8057289945778085765}

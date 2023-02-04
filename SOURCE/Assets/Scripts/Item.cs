@@ -8,6 +8,7 @@ public class Item : MonoBehaviour
 {
     [SerializeField] private InventoryManager inventory;
     [SerializeField] private RootManager rootManager;
+    [SerializeField] private GameManager gm;
     
     [Header("Item Quality")]
     [SerializeField] private bool hasSpike;
@@ -23,7 +24,8 @@ public class Item : MonoBehaviour
     public bool needStink;
     public bool needDrill;
     public bool needHealth;
-
+    public bool plainItem;
+    
     [Header("Connected Items")] 
     [SerializeField] private Item[] connectedItems;
 
@@ -31,9 +33,13 @@ public class Item : MonoBehaviour
     [SerializeField] private Color hiddenColor;
     [SerializeField] private Color glowColor;
     [SerializeField] private Color availableColor;
+    [SerializeField] private Color completedColor;
     [SerializeField] private Image itemImage;
     [SerializeField] private Button itemButton;
 
+    private bool itemUsed = false;
+    private bool isAvailable = false;
+    
     private void Start()
     {
         itemImage.color = hiddenColor;
@@ -42,37 +48,54 @@ public class Item : MonoBehaviour
 
     public void OnHoverEnter()
     {
-        foreach (var item in connectedItems)
+        if (!itemUsed && !isAvailable)
         {
-            if (item.needSpike && inventory.hasSpike)
+            foreach (var item in connectedItems)
             {
-                item.SetGlow();
-            }
-            else if (item.needStink && inventory.hasStink)
-            {
-                item.SetGlow();
-            }
-            else if (item.needDrill && inventory.hasDrill)
-            {
-                item.SetGlow();
-            }
-            else if (item.needHealth && inventory.hasHealth)
-            {
-                item.SetGlow();
-            }
-            else if(!item.needDrill && !item.needStink && !item.needDrill)
-            {
-                item.SetGlow();
+                if (item.needSpike && inventory.hasSpike)
+                {
+                    item.SetGlow();
+                    continue;
+                }
+            
+                if (item.needStink && inventory.hasStink)
+                {
+                    item.SetGlow();
+                    continue;
+                }
+            
+                if (item.needDrill && inventory.hasDrill)
+                {
+                    item.SetGlow();
+                    continue;
+                }
+            
+                if (item.needHealth && inventory.hasHealth)
+                {
+                    item.SetGlow();
+                    continue;
+                }
+            
+                if(item.plainItem)
+                {
+                    item.SetGlow();
+                    continue;
+                }
             }
         }
+        
     }
     
     public void OnHoverExit()
     {
-        foreach (var item in connectedItems)
+        if (!itemUsed && !isAvailable)
         {
-            item.HideImage();
+            foreach (var item in connectedItems)
+            {
+                item.HideImage();
+            }
         }
+        
     }
 
     public void OnItemSelected()
@@ -90,6 +113,10 @@ public class Item : MonoBehaviour
 
     private void SelectionComplete()
     {
+        bool hasWin = false;
+        itemUsed = true;
+        itemImage.color = completedColor;
+        itemButton.interactable = false;
         //Mark Time Manager
         //Set the item's properties (branching or powerup)
         if (hasDrill)
@@ -122,64 +149,100 @@ public class Item : MonoBehaviour
         
         if (hasBranches)
         {
+            
             foreach (var item in connectedItems)
             {
                 if (item.needSpike && inventory.hasSpike)
                 {
                     item.ItemAvailable();
                     rootManager.ShowRoot(this.name + "+" + item.name);
-                    if (isWin)
+                    if (item.isWin)
                     {
-                        //GameManager win condition if(drill...
+                        hasWin = true;
+                        break;
                     }
+
+                    continue;
                 }
-                else if (item.needStink && inventory.hasStink)
+                
+                if (item.needStink && inventory.hasStink)
                 {
                     item.ItemAvailable();
                     rootManager.ShowRoot(this.name + "+" + item.name);
-                    if (isWin)
+                    if (item.isWin)
                     {
-                        //GameManager win condition if(drill...
+                        hasWin = true;
+                        break;
                     }
+                    continue;
                 }
-                else if (item.needDrill && inventory.hasDrill)
+                
+                if (item.needDrill && inventory.hasDrill)
                 {
                     item.ItemAvailable();
                     rootManager.ShowRoot(this.name + "+" + item.name);
-                    if (isWin)
+                    if (item.isWin)
                     {
-                        //GameManager win condition if(drill...
+                        hasWin = true;
+                        break;
                     }
+                    continue;
                 }
-                else if(!item.needDrill && !item.needStink && !item.needDrill)
+                
+                if (item.needHealth && inventory.hasHealth)
                 {
                     item.ItemAvailable();
                     rootManager.ShowRoot(this.name + "+" + item.name);
-                    if (isWin)
+                    if (item.isWin)
                     {
-                        //GameManager win condition if(drill...
+                        hasWin = true;
+                        break;
                     }
+                    continue;
+                }
+                
+                if(item.plainItem)
+                {
+                    item.ItemAvailable();
+                    rootManager.ShowRoot(this.name + "+" + item.name);
+                    if (item.isWin)
+                    {
+                        hasWin = true;
+                        break;
+                    }
+                    continue;
                 }
             }
+
+            
         }
-        
-        //Check Time Manager
+        if (hasWin)
+        {
+            gm.HasWin();
+        }
+        else
+        {
+            gm.CheckDay();
+        }
     }
 
     public void SetGlow()
     {
-        itemImage.color = glowColor;
+        if(!itemUsed) itemImage.color = glowColor;
     }
 
     public void HideImage()
     {
-        itemImage.color = hiddenColor;
+        if(!itemUsed) itemImage.color = hiddenColor;
     }
     
     public void ItemAvailable()
     {
-        itemImage.color = availableColor;
-        itemButton.interactable = true;
-        
+        if (!itemUsed)
+        {
+            isAvailable = true;
+            itemImage.color = availableColor;
+            itemButton.interactable = true;
+        }
     }
 }
