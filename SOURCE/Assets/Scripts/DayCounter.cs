@@ -24,9 +24,17 @@ public class DayCounter : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera CamZoom;
     [SerializeField] private GameObject[] trashToPickup;
     [SerializeField] private GameObject sapling;
+    [SerializeField] private GameObject wastedScreen;
     //use this bool to check if we're in the middle of a transition or not
     public bool ChangingDay {
         get { return changingDay; }
+    }
+
+    public IEnumerator GameStart()
+    {
+        CamUp.Priority = 100;
+        yield return new WaitForSeconds(3f);
+        CamUp.Priority = 0;
     }
 
     public IEnumerator AdvanceDay()
@@ -55,7 +63,7 @@ public class DayCounter : MonoBehaviour
             {
                 gm.transform.position += new Vector3(0, 100, 0);
             }
-            //spawn wasted screen
+            wastedScreen.SetActive(true);
         }
     }
 
@@ -79,9 +87,14 @@ public class DayCounter : MonoBehaviour
         //Debug.Log("Changing day? " + changingDay + " dayIndex: " + dayIndex);
         if (Input.GetMouseButtonDown(0))
         {
-            StartCoroutine(AdvanceDay());
+            //StartCoroutine(AdvanceDay());
             //StartCoroutine(YouWin());
         }
+    }
+
+    void Start()
+    {
+        StartCoroutine(GameStart());
     }
 
     public int CheckDay()
