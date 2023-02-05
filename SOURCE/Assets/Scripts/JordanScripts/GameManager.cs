@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject lostScreen;
     [SerializeField] private int maxDay = 8;
-    [SerializeField] private GameObject uiCover;
+    //[SerializeField] private GameObject uiCover;
     
 
     public void HasWin()
@@ -36,14 +36,15 @@ public class GameManager : MonoBehaviour
     {
         startWindow.SetActive(false);
         startItem.ItemAvailable();
+        dayCounter.StartGame();
     }
 
     public void CheckDay()
     {
         if (dayCounter.CheckDay() < maxDay)
         {
-            uiCover.SetActive(true);
-            dayCounter.AdvanceDay();
+            //uiCover.SetActive(true);
+            dayCounter.NextDay();
         }
         else
         {
@@ -53,6 +54,6 @@ public class GameManager : MonoBehaviour
 
     public void CloseCover()
     {
-        uiCover.SetActive(false);
+        //uiCover.SetActive(false);
     }
 }
