@@ -37,6 +37,11 @@ public class DayCounter : MonoBehaviour
         CamUp.Priority = 0;
     }
 
+    public void StartGame()
+    {
+        StartCoroutine(GameStart());
+    }
+
     public IEnumerator AdvanceDay()
     {
         if (!changingDay && dayIndex < dayMax)
@@ -67,6 +72,11 @@ public class DayCounter : MonoBehaviour
         }
     }
 
+    public void NextDay()
+    {
+        StartCoroutine(AdvanceDay());
+    }
+
     public IEnumerator YouWin()
     {
         CamUp.Priority = 100;
@@ -94,7 +104,7 @@ public class DayCounter : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(GameStart());
+        
     }
 
     public int CheckDay()

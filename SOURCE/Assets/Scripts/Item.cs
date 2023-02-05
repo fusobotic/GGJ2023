@@ -50,7 +50,7 @@ public class Item : MonoBehaviour
 
     public void OnHoverEnter()
     {
-        if (!itemUsed && !isAvailable)
+        if (!itemUsed && isAvailable)
         {
             foreach (var item in connectedItems)
             {
@@ -124,11 +124,13 @@ public class Item : MonoBehaviour
         if (hasDrill)
         {
             inventory.hasDrill = true;
+            GameObject.FindObjectOfType<ParticleManager>().GetComponent<ParticleManager>().turnOnDrill();
             //change plant state
         }
         if (hasStink)
         {
             inventory.hasStink = true;
+            GameObject.FindObjectOfType<ParticleManager>().GetComponent<ParticleManager>().turnOnCheese();
             //move mouse
             //change plant state
         }
@@ -141,12 +143,14 @@ public class Item : MonoBehaviour
         if (hasHealth)
         {
             inventory.hasHealth = true;
+            GameObject.FindObjectOfType<ParticleManager>().GetComponent<ParticleManager>().turnOnMedication();
             //change plant state
         }
 
         if (hasMusic)
         {
             //change music
+            GameObject.FindObjectOfType<MusicManager>().GetComponent<MusicManager>().SwitchMusic();
         }
         
         if (hasBranches)
