@@ -16,6 +16,7 @@ public class DayCounter : MonoBehaviour
 
     [SerializeField] private GameManager gm;
     [SerializeField] private Animator plantAnimator;
+    [SerializeField] private Animator truckAnimator;
     
     //use this bool to check if we're in the middle of a transition or not
     public bool ChangingDay {
@@ -40,6 +41,7 @@ public class DayCounter : MonoBehaviour
         {
             //lose condition?
             //trigger garbage truck animation and then lose screen
+            truckAnimator.SetTrigger("PullUp");
         }
     }
 
