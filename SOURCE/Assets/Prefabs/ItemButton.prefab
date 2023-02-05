@@ -339,6 +339,7 @@ MonoBehaviour:
   inventory: {fileID: 0}
   rootManager: {fileID: 0}
   gm: {fileID: 0}
+  sfx: {fileID: 0}
   hasSpike: 0
   hasStink: 0
   hasDrill: 0
@@ -351,9 +352,11 @@ MonoBehaviour:
   needDrill: 0
   needHealth: 0
   plainItem: 0
+  hasGarbage: 0
   connectedItems: []
+  garbage: {fileID: 0}
   hiddenColor: {r: 0, g: 0, b: 0, a: 0}
-  glowColor: {r: 0.21698111, g: 0.20572266, b: 0.20572266, a: 0.8352941}
+  glowColor: {r: 0.3679245, g: 0.36271805, b: 0.36271805, a: 0.8352941}
   availableColor: {r: 1, g: 1, b: 1, a: 1}
   completedColor: {r: 0, g: 0, b: 0, a: 0.80784315}
   itemImage: {fileID: 8057289945778085766}

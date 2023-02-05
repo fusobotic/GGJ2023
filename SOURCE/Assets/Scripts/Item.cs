@@ -58,7 +58,7 @@ public class Item : MonoBehaviour
                 if (item.needSpike && inventory.hasSpike)
                 {
                     item.SetGlow();
-                    item.garbage.GetComponent<Image>().color = hiddenColor;
+                    //item.garbage.GetComponent<Image>().color = hiddenColor;
                     continue;
                 }
             
@@ -97,7 +97,7 @@ public class Item : MonoBehaviour
             foreach (var item in connectedItems)
             {
                 item.HideImage();
-                if(item.hasGarbage) item.garbage.GetComponent<Image>().color = availableColor;
+                //if(item.hasGarbage) item.garbage.GetComponent<Image>().color = availableColor;
             }
         }
         
