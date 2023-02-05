@@ -15,6 +15,7 @@ public class DayCounter : MonoBehaviour
     private Toggle[] calendarDays;
 
     [SerializeField] private GameManager gm;
+    [SerializeField] private Animator plantAnimator;
     
     //use this bool to check if we're in the middle of a transition or not
     public bool ChangingDay {
@@ -29,10 +30,11 @@ public class DayCounter : MonoBehaviour
             if(calendarDays.Length > 2) 
                 calendarDays[dayIndex].isOn = true;
             dayIndex++;
+            plantAnimator.SetInteger("Phase", dayIndex);
             dayNightControl.ChangeToNight();
             yield return new WaitForSeconds(dayNightControl.CycleTime()*2);
             changingDay = false;
-            gm.CloseCover();
+            //gm.CloseCover();
         }
         else if (!changingDay && dayIndex == dayMax)
         {
