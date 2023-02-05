@@ -352,9 +352,9 @@ MonoBehaviour:
   needHealth: 0
   plainItem: 0
   connectedItems: []
-  hiddenColor: {r: 0, g: 0, b: 0, a: 0.7882353}
-  glowColor: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 0.78039217}
+  hiddenColor: {r: 0, g: 0, b: 0, a: 0}
+  glowColor: {r: 0.21698111, g: 0.20572266, b: 0.20572266, a: 0.8352941}
   availableColor: {r: 1, g: 1, b: 1, a: 1}
-  completedColor: {r: 0, g: 0, b: 0, a: 0}
+  completedColor: {r: 0, g: 0, b: 0, a: 0.80784315}
   itemImage: {fileID: 8057289945778085766}
   itemButton: {fileID: 8057289945778085765}
