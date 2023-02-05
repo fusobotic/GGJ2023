@@ -13,8 +13,9 @@ public class DayCounter : MonoBehaviour
 
     [SerializeField]
     private DayNightControl dayNightControl;
-    [SerializeField]
-    private Toggle[] calendarDays;
+
+    [SerializeField] private GameObject[] calendarDays;
+    //private Toggle[] calendarDays;
 
     [SerializeField] private GameManager gm;
     [SerializeField] private Animator plantAnimator;
@@ -35,7 +36,7 @@ public class DayCounter : MonoBehaviour
             CamUp.Priority = 100;
             changingDay = true;
             if(calendarDays.Length > 2) 
-                calendarDays[dayIndex].isOn = true;
+                calendarDays[dayIndex].SetActive(true);
             dayIndex++;
             plantAnimator.SetInteger("Phase", dayIndex);
             dayNightControl.ChangeToNight();
