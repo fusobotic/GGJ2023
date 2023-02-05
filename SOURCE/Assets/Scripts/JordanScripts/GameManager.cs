@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject winScreen;
     [SerializeField] public GameObject lostScreen;
     [SerializeField] private int maxDay = 8;
+    [SerializeField] private SFXManager sfx;
     //[SerializeField] private GameObject uiCover;
     
 
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
         startWindow.SetActive(false);
         startItem.ItemAvailable();
         dayCounter.StartGame();
+        sfx.PlaySelectMenu();
     }
 
     public void CheckDay()

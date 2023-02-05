@@ -9,6 +9,7 @@ public class Item : MonoBehaviour
     [SerializeField] private InventoryManager inventory;
     [SerializeField] private RootManager rootManager;
     [SerializeField] private GameManager gm;
+    [SerializeField] private SFXManager sfx;
     
     [Header("Item Quality")]
     [SerializeField] private bool hasSpike;
@@ -57,6 +58,7 @@ public class Item : MonoBehaviour
                 if (item.needSpike && inventory.hasSpike)
                 {
                     item.SetGlow();
+                    item.garbage.GetComponent<Image>().color = hiddenColor;
                     continue;
                 }
             
@@ -95,6 +97,7 @@ public class Item : MonoBehaviour
             foreach (var item in connectedItems)
             {
                 item.HideImage();
+                if(item.hasGarbage) item.garbage.GetComponent<Image>().color = availableColor;
             }
         }
         
@@ -106,6 +109,7 @@ public class Item : MonoBehaviour
         //Initiate completion after held time
         //Start a timer
         SelectionComplete();
+        sfx.PlaySelectItem();
     }
 
     public void ItemDeselected()
@@ -125,26 +129,26 @@ public class Item : MonoBehaviour
         {
             inventory.hasDrill = true;
             GameObject.FindObjectOfType<ParticleManager>().GetComponent<ParticleManager>().turnOnDrill();
+            sfx.PlayDrill();
             //change plant state
         }
         if (hasStink)
         {
             inventory.hasStink = true;
             GameObject.FindObjectOfType<ParticleManager>().GetComponent<ParticleManager>().turnOnCheese();
-            //move mouse
-            //change plant state
+            sfx.PlayStink();
         }
         if (hasSpike)
         {
             inventory.hasSpike = true;
-            //change plant state
+            sfx.PlaySpike();
         }
 
         if (hasHealth)
         {
             inventory.hasHealth = true;
             GameObject.FindObjectOfType<ParticleManager>().GetComponent<ParticleManager>().turnOnMedication();
-            //change plant state
+            sfx.PlayHealth();
         }
 
         if (hasMusic)
