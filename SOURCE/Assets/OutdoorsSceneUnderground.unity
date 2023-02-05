@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 636.27014, g: 1048.6973, b: 2226.101, a: 1}
+  m_IndirectSpecularColor: {r: 635.66003, g: 1048.2043, b: 2226.1562, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5425,7 +5425,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.5
+  m_fontSize: 32.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6407,7 +6407,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 5
-    m_Time: 0.5
+    m_Time: 1.5
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -6612,7 +6612,6 @@ MonoBehaviour:
   winScreen: {fileID: 1753707496}
   lostScreen: {fileID: 1753707495}
   maxDay: 8
-  uiCover: {fileID: 1753707497}
 --- !u!114 &1645296555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7464,12 +7463,6 @@ GameObject:
 --- !u!1 &1753707496 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2523249841549557733, guid: 46c2816a40da5d548b5f892e4a3e2d68,
-    type: 3}
-  m_PrefabInstance: {fileID: 1753707493}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1753707497 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7281910967600743472, guid: 46c2816a40da5d548b5f892e4a3e2d68,
     type: 3}
   m_PrefabInstance: {fileID: 1753707493}
   m_PrefabAsset: {fileID: 0}
@@ -8373,7 +8366,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.5
+  m_fontSize: 32.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
