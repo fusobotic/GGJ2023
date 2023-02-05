@@ -25,10 +25,12 @@ public class Item : MonoBehaviour
     public bool needDrill;
     public bool needHealth;
     public bool plainItem;
+    public bool hasGarbage;
     
     [Header("Connected Items")] 
     [SerializeField] private Item[] connectedItems;
-
+    [SerializeField] private GameObject garbage;
+    
     [Header("Item States")] 
     [SerializeField] private Color hiddenColor;
     [SerializeField] private Color glowColor;
@@ -240,6 +242,7 @@ public class Item : MonoBehaviour
     {
         if (!itemUsed)
         {
+            if(hasGarbage) garbage.SetActive(false);
             isAvailable = true;
             itemImage.color = availableColor;
             itemButton.interactable = true;
