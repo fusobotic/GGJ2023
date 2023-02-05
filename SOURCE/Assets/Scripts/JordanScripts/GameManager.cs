@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     //[SerializeField] private GameObject garbageOverlay;
     [SerializeField] private DayCounter dayCounter;
     [SerializeField] private GameObject winScreen;
-    [SerializeField] private GameObject lostScreen;
+    [SerializeField] public GameObject lostScreen;
     [SerializeField] private int maxDay = 8;
     [SerializeField] private SFXManager sfx;
     //[SerializeField] private GameObject uiCover;
@@ -18,14 +18,12 @@ public class GameManager : MonoBehaviour
 
     public void HasWin()
     {
-        //Dump truck animation
-        winScreen.SetActive(true);
+        StartCoroutine(dayCounter.YouWin(winScreen));
     }
 
     private void HasLost()
     {
-        //Dump truck animation
-        lostScreen.SetActive(true);
+        StartCoroutine(dayCounter.YouLose(lostScreen));
     }
 
     public void PlayAgain()

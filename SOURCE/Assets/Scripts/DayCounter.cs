@@ -60,15 +60,7 @@ public class DayCounter : MonoBehaviour
         }
         else if (!changingDay && dayIndex == dayMax)
         {
-            //lose condition?
-            //trigger garbage truck animation and then lose screen
-            truckAnimator.SetTrigger("PullUp");
-            yield return new WaitForSeconds(2.75f);
-            foreach (GameObject gm in trashToPickup)
-            {
-                gm.transform.position += new Vector3(0, 100, 0);
-            }
-            wastedScreen.SetActive(true);
+            StartCoroutine(YouLose(gm.lostScreen));
         }
     }
 
@@ -77,7 +69,7 @@ public class DayCounter : MonoBehaviour
         StartCoroutine(AdvanceDay());
     }
 
-    public IEnumerator YouWin()
+    public IEnumerator YouWin(GameObject winscreen)
     {
         CamUp.Priority = 100;
         truckAnimator.SetTrigger("PullUp");
@@ -89,7 +81,22 @@ public class DayCounter : MonoBehaviour
         sapling.SetActive(true);
         yield return new WaitForSeconds(3.75f);
         CamZoom.Priority = 200;
-        //YOU WIN!!!
+        winscreen.SetActive(true);
+    }
+
+    public IEnumerator YouLose(GameObject losescreen)
+    {
+        CamUp.Priority = 100;
+        truckAnimator.SetTrigger("PullUp");
+        yield return new WaitForSeconds(2.75f);
+        foreach (GameObject gm in trashToPickup)
+        {
+            gm.transform.position += new Vector3(0, 100, 0);
+        }
+        wastedScreen.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        wastedScreen.SetActive(false);
+        losescreen.SetActive(true);
     }
 
     void Update()
@@ -100,11 +107,6 @@ public class DayCounter : MonoBehaviour
             //StartCoroutine(AdvanceDay());
             //StartCoroutine(YouWin());
         }
-    }
-
-    void Start()
-    {
-        
     }
 
     public int CheckDay()
