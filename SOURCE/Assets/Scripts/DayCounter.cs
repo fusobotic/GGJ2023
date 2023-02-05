@@ -11,8 +11,9 @@ public class DayCounter : MonoBehaviour
 
     [SerializeField]
     private DayNightControl dayNightControl;
-    [SerializeField]
-    private Toggle[] calendarDays;
+
+    [SerializeField] private GameObject[] calendarDays;
+    //private Toggle[] calendarDays;
 
     [SerializeField] private GameManager gm;
     
@@ -27,7 +28,7 @@ public class DayCounter : MonoBehaviour
         {
             changingDay = true;
             if(calendarDays.Length > 2) 
-                calendarDays[dayIndex].isOn = true;
+                calendarDays[dayIndex].SetActive(true);
             dayIndex++;
             dayNightControl.ChangeToNight();
             yield return new WaitForSeconds(dayNightControl.CycleTime()*2);
